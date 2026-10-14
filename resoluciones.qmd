@@ -107,3 +107,63 @@ cat("\n--- Criterio Punto Ideal (Desfavorable) ---\n")
 res_pi_d <- criterio.PuntoIdeal(tabla_padel, favorable = FALSE)
 res_pi_d$AlternativaOptima
 ```
+**Respuestas correctas:** \* 1. Falso \* 2. Verdadero \* 3. Falso \* 4. Verdadero \* 5. Falso
+
+## Problema 2
+
+Un concesionario de automóviles en Sevilla está definiendo su estrategia de compras para el próximo trimestre. Ante la implantación de nuevas Zonas de Bajas Emisiones (ZBE) en la ciudad, la gerencia duda sobre qué volumen de vehículos híbridos adquirir, ya que la demanda final es incierta y depende de la evolución de las restricciones de tráfico y de la economía local.
+
+Se plantean cuatro alternativas de decisión:
+- **$A_1$**: Comprar un stock alto de vehículos híbridos (fuerte inversión).
+- **$A_2$**: Comprar un stock medio de vehículos híbridos y mantener stock de gasolina.
+- **$A_3$**: Comprar un stock bajo (estrategia muy conservadora).
+- **$A_4$**: Importar únicamente vehículos 100% eléctricos.
+
+Los estados de la naturaleza (escenarios) previstos son:
+- **$E_1$**: Alta demanda (las restricciones de la ZBE son muy estrictas).
+- **$E_2$**: Demanda estable (sin cambios drásticos en la regulación).
+- **$E_3$**: Caída de ventas (incertidumbre económica que frena la compra de coches).
+
+La matriz de beneficios esperados (en miles de euros) es la siguiente:
+
+| Alternativas | $E_1$ (Alta) | $E_2$ (Estable) | $E_3$ (Caída) |
+| :--- | :---: | :---: | :---: |
+| **$A_1$ (Stock Alto)** | 120 | 50 | -20 |
+| **$A_2$ (Stock Medio)** | 80 | 70 | 10 |
+| **$A_3$ (Stock Bajo)** | 40 | 40 | 30 |
+| **$A_4$ (Eléctricos)** | 90 | 20 | -40 |
+
+**Preguntas:**
+
+1. Según el criterio de Wald (pesimista), la alternativa óptima es comprar un stock bajo ($A_3$), garantizando el mayor beneficio en el peor de los casos.
+2. El criterio de Savage (minimax arrepentimiento) recomienda arriesgar e invertir en un stock alto de vehículos híbridos ($A_1$).
+3. El criterio Optimista selecciona la alternativa de importar únicamente vehículos eléctricos ($A_4$).
+4. Aplicando el criterio de Laplace, la decisión óptima para el concesionario es comprar un stock medio ($A_2$).
+5. Si asumimos un coeficiente de optimismo $\alpha = 0.5$, el método de Hurwicz coincide con el método Optimista y selecciona la alternativa $A_1$.
+
+
+### Resolución en R
+
+Definimos la matriz de beneficios para el concesionario y aplicamos la función `criterio.Todos` para resumir todas las metodologías de decisión en una  tabla, asumiendo una situación favorable (maximizar beneficios) y un $\alpha = 0.5$.
+
+```{r}
+# Matriz de beneficios
+matriz_concesionario <- c(120, 50, -20,
+                           80, 70,  10,
+                           40, 40,  30,
+                           90, 20, -40)
+
+tabla2 <- crea.tablaX(matriz_concesionario, numalternativas = 4, numestados = 3)
+rownames(tabla2) <- c("A1_StockAlto", "A2_StockMedio", "A3_StockBajo", "A4_Electricos")
+colnames(tabla2) <- c("E1_Alta", "E2_Estable", "E3_Caida")
+
+# Resolución con todos los criterios en una sola tabla (alfa = 0.5)
+res_todos <- criterio.Todos(tabla2, alfa = 0.5, favorable = TRUE)
+res_todos
+```
+**Respuestas correctas:**
+* 1. Verdadero
+* 2. Falso
+* 3. Falso
+* 4. Verdadero
+* 5. Verdadero

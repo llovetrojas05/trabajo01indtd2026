@@ -121,6 +121,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#resolución-en-r" id="toc-resolución-en-r" class="nav-link" data-scroll-target="#resolución-en-r">Resolución en R</a></li>
   </ul></li>
+  <li><a href="#problema-2" id="toc-problema-2" class="nav-link" data-scroll-target="#problema-2">Problema 2</a>
+  <ul class="collapse">
+  <li><a href="#resolución-en-r-1" id="toc-resolución-en-r-1" class="nav-link" data-scroll-target="#resolución-en-r-1">Resolución en R</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="resoluciones.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </div>
@@ -336,7 +340,99 @@ A4_Alquiler      45       45      45</code></pre>
           2 </code></pre>
 </div>
 </div>
+<p><strong>Respuestas correctas:</strong> * 1. Falso * 2. Verdadero * 3. Falso * 4. Verdadero * 5. Falso</p>
 </section>
+</section>
+</section>
+<section id="problema-2" class="level2">
+<h2 class="anchored" data-anchor-id="problema-2">Problema 2</h2>
+<p>Un concesionario de automóviles en Sevilla está definiendo su estrategia de compras para el próximo trimestre. Ante la implantación de nuevas Zonas de Bajas Emisiones (ZBE) en la ciudad, la gerencia duda sobre qué volumen de vehículos híbridos adquirir, ya que la demanda final es incierta y depende de la evolución de las restricciones de tráfico y de la economía local.</p>
+<p>Se plantean cuatro alternativas de decisión: - <strong><span class="math inline">\(A_1\)</span></strong>: Comprar un stock alto de vehículos híbridos (fuerte inversión). - <strong><span class="math inline">\(A_2\)</span></strong>: Comprar un stock medio de vehículos híbridos y mantener stock de gasolina. - <strong><span class="math inline">\(A_3\)</span></strong>: Comprar un stock bajo (estrategia muy conservadora). - <strong><span class="math inline">\(A_4\)</span></strong>: Importar únicamente vehículos 100% eléctricos.</p>
+<p>Los estados de la naturaleza (escenarios) previstos son: - <strong><span class="math inline">\(E_1\)</span></strong>: Alta demanda (las restricciones de la ZBE son muy estrictas). - <strong><span class="math inline">\(E_2\)</span></strong>: Demanda estable (sin cambios drásticos en la regulación). - <strong><span class="math inline">\(E_3\)</span></strong>: Caída de ventas (incertidumbre económica que frena la compra de coches).</p>
+<p>La matriz de beneficios esperados (en miles de euros) es la siguiente:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Alternativas</th>
+<th style="text-align: center;"><span class="math inline">\(E_1\)</span> (Alta)</th>
+<th style="text-align: center;"><span class="math inline">\(E_2\)</span> (Estable)</th>
+<th style="text-align: center;"><span class="math inline">\(E_3\)</span> (Caída)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(A_1\)</span> (Stock Alto)</strong></td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">-20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(A_2\)</span> (Stock Medio)</strong></td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(A_3\)</span> (Stock Bajo)</strong></td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(A_4\)</span> (Eléctricos)</strong></td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">-40</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Preguntas:</strong></p>
+<ol type="1">
+<li>Según el criterio de Wald (pesimista), la alternativa óptima es comprar un stock bajo (<span class="math inline">\(A_3\)</span>), garantizando el mayor beneficio en el peor de los casos.</li>
+<li>El criterio de Savage (minimax arrepentimiento) recomienda arriesgar e invertir en un stock alto de vehículos híbridos (<span class="math inline">\(A_1\)</span>).</li>
+<li>El criterio Optimista selecciona la alternativa de importar únicamente vehículos eléctricos (<span class="math inline">\(A_4\)</span>).</li>
+<li>Aplicando el criterio de Laplace, la decisión óptima para el concesionario es comprar un stock medio (<span class="math inline">\(A_2\)</span>).</li>
+<li>Si asumimos un coeficiente de optimismo <span class="math inline">\(\alpha = 0.5\)</span>, el método de Hurwicz coincide con el método Optimista y selecciona la alternativa <span class="math inline">\(A_1\)</span>.</li>
+</ol>
+<section id="resolución-en-r-1" class="level3">
+<h3 class="anchored" data-anchor-id="resolución-en-r-1">Resolución en R</h3>
+<p>Definimos la matriz de beneficios para el concesionario y aplicamos la función <code>criterio.Todos</code> para resumir todas las metodologías de decisión en una tabla, asumiendo una situación favorable (maximizar beneficios) y un <span class="math inline">\(\alpha = 0.5\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de beneficios</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>matriz_concesionario <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">50</span>, <span class="sc">-</span><span class="dv">20</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                           <span class="dv">80</span>, <span class="dv">70</span>,  <span class="dv">10</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                           <span class="dv">40</span>, <span class="dv">40</span>,  <span class="dv">30</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                           <span class="dv">90</span>, <span class="dv">20</span>, <span class="sc">-</span><span class="dv">40</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>tabla2 <span class="ot">&lt;-</span> <span class="fu">crea.tablaX</span>(matriz_concesionario, <span class="at">numalternativas =</span> <span class="dv">4</span>, <span class="at">numestados =</span> <span class="dv">3</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tabla2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A1_StockAlto"</span>, <span class="st">"A2_StockMedio"</span>, <span class="st">"A3_StockBajo"</span>, <span class="st">"A4_Electricos"</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tabla2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"E1_Alta"</span>, <span class="st">"E2_Estable"</span>, <span class="st">"E3_Caida"</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolución con todos los criterios en una sola tabla (alfa = 0.5)</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>res_todos <span class="ot">&lt;-</span> <span class="fu">criterio.Todos</span>(tabla2, <span class="at">alfa =</span> <span class="fl">0.5</span>, <span class="at">favorable =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>res_todos</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                E1_Alta E2_Estable E3_Caida         Wald    Optimista
+A1_StockAlto        120         50      -20          -20          120
+A2_StockMedio        80         70       10           10           80
+A3_StockBajo         40         40       30           30           40
+A4_Electricos        90         20      -40          -40           90
+iAlt.Opt (fav.)      --         --       -- A3_StockBajo A1_StockAlto
+                     Hurwicz        Savage       Laplace   Punto Ideal
+A1_StockAlto              50            50         50.00         53.85
+A2_StockMedio             45            40         53.33         44.72
+A3_StockBajo              35            80         36.67         85.44
+A4_Electricos             25            70         23.33         91.10
+iAlt.Opt (fav.) A1_StockAlto A2_StockMedio A2_StockMedio A2_StockMedio
+                 Veces Optima
+A1_StockAlto                2
+A2_StockMedio               3
+A3_StockBajo                1
+A4_Electricos               0
+iAlt.Opt (fav.) A2_StockMedio</code></pre>
+</div>
+</div>
+<p><strong>Respuestas correctas:</strong> * 1. Verdadero * 2. Falso * 3. Falso * 4. Verdadero * 5. Verdadero</p>
 </section>
 </section>
 

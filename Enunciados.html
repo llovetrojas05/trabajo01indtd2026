@@ -83,6 +83,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#problema-1" id="toc-problema-1" class="nav-link active" data-scroll-target="#problema-1">Problema 1</a></li>
+  <li><a href="#problema-2" id="toc-problema-2" class="nav-link" data-scroll-target="#problema-2">Problema 2</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Enunciados.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </div>
@@ -171,6 +172,59 @@ window.Quarto = {
 </ol>
 <hr>
 <p><strong>Respuestas correctas:</strong> * 1. Falso * 2. Verdadero * 3. Falso * 4. Verdadero * 5. Falso</p>
+</section>
+<section id="problema-2" class="level2">
+<h2 class="anchored" data-anchor-id="problema-2">Problema 2</h2>
+<p>Un concesionario de automóviles en Sevilla está definiendo su estrategia de compras para el próximo trimestre. Ante la implantación de nuevas Zonas de Bajas Emisiones (ZBE) en la ciudad, la gerencia duda sobre qué volumen de vehículos híbridos adquirir, ya que la demanda final es incierta y depende de la evolución de las restricciones de tráfico y de la economía local.</p>
+<p>Se plantean cuatro alternativas de decisión: - <strong><span class="math inline">\(A_1\)</span></strong>: Comprar un stock alto de vehículos híbridos (fuerte inversión). - <strong><span class="math inline">\(A_2\)</span></strong>: Comprar un stock medio de vehículos híbridos y mantener stock de gasolina. - <strong><span class="math inline">\(A_3\)</span></strong>: Comprar un stock bajo (estrategia muy conservadora). - <strong><span class="math inline">\(A_4\)</span></strong>: Importar únicamente vehículos 100% eléctricos.</p>
+<p>Los estados de la naturaleza (escenarios) previstos son: - <strong><span class="math inline">\(E_1\)</span></strong>: Alta demanda (las restricciones de la ZBE son muy estrictas). - <strong><span class="math inline">\(E_2\)</span></strong>: Demanda estable (sin cambios drásticos en la regulación). - <strong><span class="math inline">\(E_3\)</span></strong>: Caída de ventas (incertidumbre económica que frena la compra de coches).</p>
+<p>La matriz de beneficios esperados (en miles de euros) es la siguiente:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Alternativas</th>
+<th style="text-align: center;"><span class="math inline">\(E_1\)</span> (Alta)</th>
+<th style="text-align: center;"><span class="math inline">\(E_2\)</span> (Estable)</th>
+<th style="text-align: center;"><span class="math inline">\(E_3\)</span> (Caída)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(A_1\)</span> (Stock Alto)</strong></td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">-20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(A_2\)</span> (Stock Medio)</strong></td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(A_3\)</span> (Stock Bajo)</strong></td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(A_4\)</span> (Eléctricos)</strong></td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">-40</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Preguntas:</strong></p>
+<ol type="1">
+<li>Según el criterio de Wald (pesimista), la alternativa óptima es comprar un stock bajo (<span class="math inline">\(A_3\)</span>), garantizando el mayor beneficio en el peor de los casos.</li>
+<li>El criterio de Savage (minimax arrepentimiento) recomienda arriesgar e invertir en un stock alto de vehículos híbridos (<span class="math inline">\(A_1\)</span>).</li>
+<li>El criterio Optimista selecciona la alternativa de importar únicamente vehículos eléctricos (<span class="math inline">\(A_4\)</span>).</li>
+<li>Aplicando el criterio de Laplace, la decisión óptima para el concesionario es comprar un stock medio (<span class="math inline">\(A_2\)</span>).</li>
+<li>Si asumimos un coeficiente de optimismo <span class="math inline">\(\alpha = 0.5\)</span>, el método de Hurwicz coincide con el método Optimista y selecciona la alternativa <span class="math inline">\(A_1\)</span>.</li>
+</ol>
+<hr>
+<p><strong>Respuestas correctas:</strong> * 1. Verdadero * 2. Falso * 3. Falso * 4. Verdadero * 5. Verdadero</p>
 </section>
 
 </main>
