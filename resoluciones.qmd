@@ -1,0 +1,84 @@
+---
+title: "resoluciones"
+author: "Llovet Rojas, Eduardo"
+format:
+  html:
+    toc: true
+  typst:
+    toc: true
+---
+
+### Resolución en R
+
+Cargamos el script de funciones y construimos la matriz de decisión:
+
+```{r}
+source("teoriadecision_funciones_incertidumbre.R")
+
+matriz_padel <- c(40, 60, 70,
+                  10, 50, 90,
+                 -20, 30, 120,
+                  45, 45, 45)
+
+tabla_padel <- crea.tablaX(matriz_padel, numalternativas = 4, numestados = 3)
+rownames(tabla_padel) <- c("A1_Local", "A2_Regional", "A3_Nacional", "A4_Alquiler")
+colnames(tabla_padel) <- c("E1_Baja", "E2_Media", "E3_Alta")
+
+tabla_padel
+```
+
+#### Análisis en situación favorable:
+
+```{r, echo=FALSE}
+cat("\n--- Criterio de Wald (Favorable) ---\n")
+res_wald_f <- criterio.Wald(tabla_padel, favorable = TRUE)
+res_wald_f$AlternativaOptima
+
+cat("\n--- Criterio Optimista (Favorable) ---\n")
+res_opt_f <- criterio.Optimista(tabla_padel, favorable = TRUE)
+res_opt_f$AlternativaOptima
+
+cat("\n--- Criterio Laplace (Favorable) ---\n")
+res_lap_f <- criterio.Laplace(tabla_padel, favorable = TRUE)
+res_lap_f$AlternativaOptima
+
+cat("\n--- Criterio Savage (Favorable) ---\n")
+res_sav_f <- criterio.Savage(tabla_padel, favorable = TRUE)
+res_sav_f$AlternativaOptima
+
+cat("\n--- Criterio Hurwicz (alfa = 0.4, Favorable) ---\n")
+res_hurw_f <- criterio.Hurwicz(tabla_padel, alfa = 0.4, favorable = TRUE)
+res_hurw_f$AlternativaOptima
+
+cat("\n--- Criterio Punto Ideal (Favorable) ---\n")
+res_pi_f <- criterio.PuntoIdeal(tabla_padel, favorable = TRUE)
+res_pi_f$AlternativaOptima
+```
+
+#### Análisis en situación desfavorable:
+
+```{r, echo=FALSE}
+cat("\n--- Criterio de Wald (Desfavorable) ---\n")
+res_wald_d <- criterio.Wald(tabla_padel, favorable = FALSE)
+res_wald_d$AlternativaOptima
+
+cat("\n--- Criterio Optimista (Desfavorable) ---\n")
+res_opt_d <- criterio.Optimista(tabla_padel, favorable = FALSE)
+res_opt_d$AlternativaOptima
+
+cat("\n--- Criterio Laplace (Desfavorable) ---\n")
+res_lap_d <- criterio.Laplace(tabla_padel, favorable = FALSE)
+res_lap_d$AlternativaOptima
+
+cat("\n--- Criterio Savage (Desfavorable) ---\n")
+res_sav_d <- criterio.Savage(tabla_padel, favorable = FALSE)
+res_sav_d$AlternativaOptima
+
+cat("\n--- Criterio Hurwicz (alfa = 0.4, Desfavorable) ---\n")
+res_hurw_d <- criterio.Hurwicz(tabla_padel, alfa = 0.4, favorable = FALSE)
+res_hurw_d$AlternativaOptima
+
+cat("\n--- Criterio Punto Ideal (Desfavorable) ---\n")
+res_pi_d <- criterio.PuntoIdeal(tabla_padel, favorable = FALSE)
+res_pi_d$AlternativaOptima
+```

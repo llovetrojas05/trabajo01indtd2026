@@ -1,0 +1,38 @@
+---
+title: "Enunciados"
+author: "Llovet Rojas, Eduardo"
+format:
+  html:
+    toc: true
+  typst:
+    toc: true
+---
+
+## Problema 1
+
+Un club de pádel ubicado en Sevilla está planificando la próxima temporada de torneos y debe decidir qué tipo de evento organizar. El éxito y los beneficios generados dependerán en gran medida de la demanda de inscripciones por parte de los jugadores, la cual es incierta.
+
+La directiva ha planteado cuatro alternativas posibles: - $A_1$: Organizar un Torneo Local de fin de semana. - $A_2$: Organizar un Torneo Regional (requiere más inversión en premios y publicidad). - $A_3$: Organizar un Torneo Nacional patrocinado (alta inversión, pero con gran capacidad de atraer público si la demanda acompaña). - $A_4$: No organizar ningún torneo y mantener las pistas de césped artificial para el alquiler normal de los socios.
+
+Los estados de la naturaleza corresponden al nivel de demanda esperado: - $E_1$: Demanda Baja. - $E_2$: Demanda Media. - $E_3$: Demanda Alta.
+
+La matriz de beneficios (en miles de euros) estimada por el club es la siguiente:
+
+| Alternativas            | $E_1$ (Baja) | $E_2$ (Media) | $E_3$ (Alta) |
+|:------------------------|:------------:|:-------------:|:------------:|
+| $A_1$ (Torneo Local)    |      40      |      60       |      70      |
+| $A_2$ (Torneo Regional) |      10      |      50       |      90      |
+| $A_3$ (Torneo Nacional) |     -20      |      30       |     120      |
+| $A_4$ (Alquiler Normal) |      45      |      45       |      45      |
+
+**Preguntas:**
+
+1.  En situación favorable, el criterio de Wald recomienda la alternativa de organizar un Torneo Nacional ($A_3$).
+2.  Aplicando el criterio de Laplace en situación favorable, la mejor decisión es organizar un Torneo Local ($A_1$).
+3.  Si consideramos la matriz como una situación desfavorable (matriz de costes), el criterio Optimista seleccionaría la alternativa $A_2$.
+4.  En situación favorable, el criterio de Savage (minimax arrepentimiento) selecciona la alternativa del Torneo Regional ($A_2$).
+5.  Para un coeficiente de optimismo $\alpha = 0.4$, el criterio de Hurwicz en situación favorable escoge la alternativa $A_4$.
+
+------------------------------------------------------------------------
+
+**Respuestas correctas:** \* 1. Falso \* 2. Verdadero \* 3. Falso \* 4. Verdadero \* 5. Falso
