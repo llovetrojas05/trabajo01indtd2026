@@ -77,6 +77,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="resoluciones_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="resoluciones_files/libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -88,7 +117,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#resolución-en-r" id="toc-resolución-en-r" class="nav-link active" data-scroll-target="#resolución-en-r">Resolución en R</a></li>
+  <li><a href="#problema-1" id="toc-problema-1" class="nav-link active" data-scroll-target="#problema-1">Problema 1</a>
+  <ul class="collapse">
+  <li><a href="#resolución-en-r" id="toc-resolución-en-r" class="nav-link" data-scroll-target="#resolución-en-r">Resolución en R</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="resoluciones.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </div>
@@ -119,6 +151,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="problema-1" class="level2">
+<h2 class="anchored" data-anchor-id="problema-1">Problema 1</h2>
+<p>Un club de pádel ubicado en Sevilla está planificando la próxima temporada de torneos y debe decidir qué tipo de evento organizar. El éxito y los beneficios generados dependerán en gran medida de la demanda de inscripciones por parte de los jugadores, la cual es incierta.</p>
+<p>La directiva ha planteado cuatro alternativas posibles: - <span class="math inline">\(A_1\)</span>: Organizar un Torneo Local de fin de semana. - <span class="math inline">\(A_2\)</span>: Organizar un Torneo Regional (requiere más inversión en premios y publicidad). - <span class="math inline">\(A_3\)</span>: Organizar un Torneo Nacional patrocinado (alta inversión, pero con gran capacidad de atraer público si la demanda acompaña). - <span class="math inline">\(A_4\)</span>: No organizar ningún torneo y mantener las pistas de césped artificial para el alquiler normal de los socios.</p>
+<p>Los estados de la naturaleza corresponden al nivel de demanda esperado: - <span class="math inline">\(E_1\)</span>: Demanda Baja. - <span class="math inline">\(E_2\)</span>: Demanda Media. - <span class="math inline">\(E_3\)</span>: Demanda Alta.</p>
+<p>La matriz de beneficios (en miles de euros) estimada por el club es la siguiente:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Alternativas</th>
+<th style="text-align: center;"><span class="math inline">\(E_1\)</span> (Baja)</th>
+<th style="text-align: center;"><span class="math inline">\(E_2\)</span> (Media)</th>
+<th style="text-align: center;"><span class="math inline">\(E_3\)</span> (Alta)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(A_1\)</span> (Torneo Local)</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(A_2\)</span> (Torneo Regional)</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(A_3\)</span> (Torneo Nacional)</td>
+<td style="text-align: center;">-20</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">120</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(A_4\)</span> (Alquiler Normal)</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">45</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Preguntas:</strong></p>
+<ol type="1">
+<li>En situación favorable, el criterio de Wald recomienda la alternativa de organizar un Torneo Nacional (<span class="math inline">\(A_3\)</span>).</li>
+<li>Aplicando el criterio de Laplace en situación favorable, la mejor decisión es organizar un Torneo Local (<span class="math inline">\(A_1\)</span>).</li>
+<li>Si consideramos la matriz como una situación desfavorable (matriz de costes), el criterio Optimista seleccionaría la alternativa <span class="math inline">\(A_2\)</span>.</li>
+<li>En situación favorable, el criterio de Savage (minimax arrepentimiento) selecciona la alternativa del Torneo Regional (<span class="math inline">\(A_2\)</span>).</li>
+<li>Para un coeficiente de optimismo <span class="math inline">\(\alpha = 0.4\)</span>, el criterio de Hurwicz en situación favorable escoge la alternativa <span class="math inline">\(A_4\)</span>.</li>
+</ol>
 <section id="resolución-en-r" class="level3">
 <h3 class="anchored" data-anchor-id="resolución-en-r">Resolución en R</h3>
 <p>Cargamos el script de funciones y construimos la matriz de decisión:</p>
@@ -248,6 +336,7 @@ A4_Alquiler      45       45      45</code></pre>
           2 </code></pre>
 </div>
 </div>
+</section>
 </section>
 </section>
 
