@@ -7,6 +7,11 @@ format:
   typst:
     toc: true
 ---
+## Introducción
+En este documento se recogen dos problemas de Teoría de la Decisión bajo Incertidumbre.
+El primero basado en una matriz de decisión con valores propuestos y el segundo relacionado con una situación real.
+Para cada problema se presentan las alternativas de decisión, los estados de la naturaleza y cinco afirmaciones de verdadero o falso, indicando claramente las respuestas verdaderas al final de cada ejercicio.
+Las resoluciones correspondientes se encuentran en el documento resoluciones donde se aplican los criterios de decisión mediante las funciones de R proporcionadas en la asignatura.
 
 ## Problema 1
 

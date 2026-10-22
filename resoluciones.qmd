@@ -1,5 +1,5 @@
 ---
-title: "resoluciones"
+title: "Resoluciones"
 author: "Llovet Rojas, Eduardo"
 format:
   html:
@@ -7,6 +7,14 @@ format:
   typst:
     toc: true
 ---
+## Introducción
+En este documento se presentan los dos problemas de Teoría de la Decisión bajo Incertidumbre elaborados, junto con sus correspondientes resoluciones.
+Para resolverlos se utilizan las funciones de R proporcionadas en la asignatura, aplicando los
+criterios de decisión bajo incertidumbre estudiados.
+En los primeros problemas de cada integrante se analizan situaciones favorables (beneficios) y desfavorables (costes), aplicando individualmente los criterios correspondientes. En los segundos problemas se utiliza la función criterio.Todos() para obtener los resultados de los distintos
+criterios en una única tabla.
+Además, se incluyen las soluciones de las afirmaciones de verdadero o falso planteadas en los ejercicios
+
 ## Problema 1
 
 Un club de pádel ubicado en Sevilla está planificando la próxima temporada de torneos y debe decidir qué tipo de evento organizar. El éxito y los beneficios generados dependerán en gran medida de la demanda de inscripciones por parte de los jugadores, la cual es incierta.
